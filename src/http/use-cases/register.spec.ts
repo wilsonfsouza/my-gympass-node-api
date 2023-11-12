@@ -6,12 +6,12 @@ import { RegisterUseCase } from './register'
 
 describe('Register Use Case', () => {
   it('should be able to register a user', async () => {
-    const usersReposotory = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(usersReposotory)
+    const usersRepository = new InMemoryUsersRepository()
+    const registerUseCase = new RegisterUseCase(usersRepository)
 
     const { user } = await registerUseCase.execute({
       name: 'Jane Doe',
-      email: 'janedoe@eample.com',
+      email: 'janedoe@example.com',
       password: '12345678',
     })
 
@@ -19,12 +19,12 @@ describe('Register Use Case', () => {
   })
 
   it('should hash user password upon registration', async () => {
-    const usersReposotory = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(usersReposotory)
+    const usersRepository = new InMemoryUsersRepository()
+    const registerUseCase = new RegisterUseCase(usersRepository)
 
     const { user } = await registerUseCase.execute({
       name: 'Jane Doe',
-      email: 'janedoe@eample.com',
+      email: 'janedoe@example.com',
       password: '12345678',
     })
 
@@ -37,10 +37,10 @@ describe('Register Use Case', () => {
   })
 
   it('should not be able to register with same email twice', async () => {
-    const usersReposotory = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(usersReposotory)
+    const usersRepository = new InMemoryUsersRepository()
+    const registerUseCase = new RegisterUseCase(usersRepository)
 
-    const email = 'janedoe@eample.com'
+    const email = 'janedoe@example.com'
 
     await registerUseCase.execute({
       name: 'Jane Doe',
