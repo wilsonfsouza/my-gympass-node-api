@@ -6,3 +6,6 @@ build
 
 # Environmental Variables
 .env
+
+# Unit Test Coverage
+coverage
