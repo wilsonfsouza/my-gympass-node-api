@@ -15,7 +15,7 @@ GymPass style app.
 - [ ] User must be able to search gyms by name;
 - [X] User must be able to check-in in a gym;
 - [ ] It must be able to validate the check-in of a user;
-- [ ] It must be able to register a gym;
+- [X] It must be able to register a gym;
 
 ## RNs (Business Logic)
 
