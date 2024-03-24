@@ -1,3 +1,4 @@
+import { MAX_ITEMS_PER_PAGE } from '@/constants'
 import { Gym, Prisma } from '@prisma/client'
 import { randomUUID } from 'crypto'
 import { GymsRepository } from '../gyms-repository'
@@ -13,6 +14,12 @@ export class InMemoryGymsRepository implements GymsRepository {
     }
 
     return gym
+  }
+
+  async searchMany(query: string, page: number) {
+    return this.items
+      .filter((item) => item.title.includes(query))
+      .slice((page - 1) * MAX_ITEMS_PER_PAGE, page * MAX_ITEMS_PER_PAGE)
   }
 
   async create(data: Prisma.GymCreateInput) {
