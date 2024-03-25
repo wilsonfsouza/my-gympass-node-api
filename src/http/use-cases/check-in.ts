@@ -1,3 +1,4 @@
+import { MAX_DISTANCE_IN_KILOMETERS } from '@/constants'
 import { CheckInsRepository } from '@/repositories/check-ins-repository'
 import { GymsRepository } from '@/repositories/gyms-repository'
 import { getDistanceBetweenCoordinates } from '@/utils/get-distance-between-coordinates'
@@ -47,8 +48,6 @@ export class CheckInUseCase {
         longitude: gym.longitude.toNumber(),
       },
     })
-
-    const MAX_DISTANCE_IN_KILOMETERS = 0.1 // 100 meters
 
     if (distanceBetweenUserAndGym > MAX_DISTANCE_IN_KILOMETERS) {
       throw new MaxDistanceError()
