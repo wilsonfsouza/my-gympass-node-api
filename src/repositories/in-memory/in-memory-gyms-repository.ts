@@ -1,7 +1,8 @@
-import { MAX_ITEMS_PER_PAGE } from '@/constants'
+import { MAX_DISTANCE_NEARBY_IN_METERS, MAX_ITEMS_PER_PAGE } from '@/constants'
+import { getDistanceBetweenCoordinates } from '@/utils/get-distance-between-coordinates'
 import { Gym, Prisma } from '@prisma/client'
 import { randomUUID } from 'crypto'
-import { GymsRepository } from '../gyms-repository'
+import { FindManyNearbyParams, GymsRepository } from '../gyms-repository'
 
 export class InMemoryGymsRepository implements GymsRepository {
   public items: Gym[] = []
@@ -14,6 +15,23 @@ export class InMemoryGymsRepository implements GymsRepository {
     }
 
     return gym
+  }
+
+  async findManyNearby(params: FindManyNearbyParams) {
+    return this.items.filter((item) => {
+      const distance = getDistanceBetweenCoordinates({
+        from: {
+          latitude: params.latitude,
+          longitude: params.longitude,
+        },
+        to: {
+          latitude: item.latitude.toNumber(),
+          longitude: item.longitude.toNumber(),
+        },
+      })
+      console.log(distance)
+      return distance < MAX_DISTANCE_NEARBY_IN_METERS
+    })
   }
 
   async searchMany(query: string, page: number) {
