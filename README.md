@@ -14,7 +14,7 @@ GymPass style app.
 - [X] User must be able to search for nearby gyms (up to 10 km);
 - [X] User must be able to search gyms by name;
 - [X] User must be able to check-in in a gym;
-- [ ] It must be able to validate the check-in of a user;
+- [X] It must be able to validate the check-in of a user;
 - [X] It must be able to register a gym;
 
 ## RNs (Business Logic)
@@ -22,7 +22,7 @@ GymPass style app.
 - [X] User cannot register with an email that already exists;
 - [X] User cannot make 2 check-ins in the same day;
 - [X] User cannot check-in into a gym if it's not near by (100m);
-- [ ] The check-in can only be validated up to 20 minutes after its creation;
+- [X] The check-in can only be validated up to 20 minutes after its creation;
 - [ ] The check-in can only be validated by an admin;
 - [ ] A gym can only be registered by an admin;
 
