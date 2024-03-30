@@ -29,7 +29,7 @@ export class InMemoryGymsRepository implements GymsRepository {
           longitude: item.longitude.toNumber(),
         },
       })
-      console.log(distance)
+
       return distance < MAX_DISTANCE_NEARBY_IN_METERS
     })
   }
